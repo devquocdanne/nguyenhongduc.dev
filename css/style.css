@@ -22,7 +22,7 @@ body {
   border-radius: 16px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.7);
   text-align: center;
-  position: relative;
+  position: relative; /* Thêm dòng này để ảnh position absolute nằm trong container */
   z-index: 10;
 }
 
@@ -178,7 +178,7 @@ h2 {
 
 /* CSS cho ảnh kéo thả */
 #movableImage {
-  position: fixed;
+  position: absolute; /* đổi từ fixed thành absolute */
   top: 20px;
   left: 20px;
   width: 60px;
