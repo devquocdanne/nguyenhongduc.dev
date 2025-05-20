@@ -1,19 +1,35 @@
-// Tạo 30 phần tử tuyết rơi
-const snowflakeCount = 30;
+const img = document.getElementById('movableImage');
 
-for(let i = 0; i < snowflakeCount; i++) {
-  const snowflake = document.createElement('div');
-  snowflake.classList.add('snowflake');
+let isDragging = false;
+let offsetX = 0;
+let offsetY = 0;
 
-  // Gán giá trị random cho biến CSS custom --random, --random2, ...
-  snowflake.style.setProperty('--random', Math.random());
-  snowflake.style.setProperty('--random2', Math.random());
-  snowflake.style.setProperty('--random3', Math.random());
+img.addEventListener('mousedown', (e) => {
+  isDragging = true;
+  offsetX = e.clientX - img.offsetLeft;
+  offsetY = e.clientY - img.offsetTop;
+  img.style.cursor = 'grabbing';
+});
 
-  // Random kích cỡ tuyết (5px đến 12px)
-  const size = Math.random() * 7 + 5;
-  snowflake.style.width = size + 'px';
-  snowflake.style.height = size + 'px';
+document.addEventListener('mouseup', () => {
+  isDragging = false;
+  img.style.cursor = 'grab';
+});
 
-  document.body.appendChild(snowflake);
-}
+document.addEventListener('mousemove', (e) => {
+  if (isDragging) {
+    let x = e.clientX - offsetX;
+    let y = e.clientY - offsetY;
+
+    // Giới hạn ảnh không ra ngoài màn hình
+    const maxX = window.innerWidth - img.offsetWidth;
+    const maxY = window.innerHeight - img.offsetHeight;
+    if (x < 0) x = 0;
+    if (y < 0) y = 0;
+    if (x > maxX) x = maxX;
+    if (y > maxY) y = maxY;
+
+    img.style.left = x + 'px';
+    img.style.top = y + 'px';
+  }
+});
