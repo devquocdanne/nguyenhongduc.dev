@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nguyen Hong Duc - Game Developer Portfolio</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="container">
+    <!-- Tên -->
+    <h1>Nguyen Hong Duc</h1>
+    
+    <!-- Xuống dòng riêng biệt -->
+    <div style="margin-top: -10px;">
+      <h2>Game Developer </h2>
+    </div>
+
+    <section class="about-me">
+      <h3>About Me</h3>
+      <p>
+        I'm Nguyen Hong Duc, a versatile game developer passionate about crafting immersive and innovative gaming experiences. With expertise in scripting, game mechanics, and creative design, I focus on delivering quality and engaging gameplay using Roblox, Unity, and beyond.
+      </p>
+    </section>
+
+    <section class="skills">
+      <h3>Skills</h3>
+      <ul>
+        <li>Game Development (Roblox, Unity)</li>
+        <li>Scripting Languages: Lua, JavaScript, Python</li>
+        <li>Version Control: Git & GitHub</li>
+        <li>3D Modeling & Animation (Blender)</li>
+        <li>UI/UX Design for Games</li>
+        <li>Problem Solving & Debugging</li>
+      </ul>
+    </section>
+
+    <section class="contact">
+      <h3>Contact</h3>
+      <p>
+        Discord: <strong>noxd999</strong><br />
+        Email: <strong>studioscoderealm@gmail.com</strong><br />
+        GitHub: <a href="https://github.com/devquocdanne" target="_blank">github.com/devquocdanne</a>
+      </p>
+    </section>
+
+    <!-- Button Contact -->
+    <a href="mailto:studioscoderealm@gmail.com" class="button">Contact Me</a>
+  </div>
+
+  <!-- Ảnh có thể kéo thả -->
+  <img
+    src="images/anh.png.png"
+    alt="Anh"
+    id="movableImage"
+    width="60"
+    height="60"
+    style="position: absolute; top: 20px; left: 20px; cursor: grab; z-index: 1000;"
+  />
+
+  <!-- JS -->
+  <script src="js/script.js"></script>
+
+  <script>
+    const img = document.getElementById('movableImage');
+
+    let isDragging = false;
+    let offsetX, offsetY;
+
+    img.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      offsetX = e.clientX - img.offsetLeft;
+      offsetY = e.clientY - img.offsetTop;
+      img.style.cursor = 'grabbing';
+    });
+
+    document.addEventListener('mouseup', () => {
+      isDragging = false;
+      img.style.cursor = '
