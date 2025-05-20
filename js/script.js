@@ -8,11 +8,13 @@ img.addEventListener('mousedown', (e) => {
   offsetX = e.clientX - img.offsetLeft;
   offsetY = e.clientY - img.offsetTop;
   img.style.cursor = 'grabbing';
+  document.body.style.userSelect = 'none';
 });
 
 document.addEventListener('mouseup', () => {
   isDragging = false;
   img.style.cursor = 'grab';
+  document.body.style.userSelect = 'auto';
 });
 
 document.addEventListener('mousemove', (e) => {
@@ -20,7 +22,6 @@ document.addEventListener('mousemove', (e) => {
   let x = e.clientX - offsetX;
   let y = e.clientY - offsetY;
 
-  // Giới hạn trong cửa sổ trình duyệt (tuỳ chọn)
   const maxX = window.innerWidth - img.width;
   const maxY = window.innerHeight - img.height;
   if (x < 0) x = 0;
