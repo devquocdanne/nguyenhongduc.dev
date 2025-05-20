@@ -10,34 +10,6 @@
 
   <!-- CSS -->
   <link rel="stylesheet" href="css/style.css" />
-  <style>
-    /* Thêm CSS cho container và ảnh kéo thả */
-    .container {
-      position: relative; /* Quan trọng để ảnh absolute nằm trong container */
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 40px 30px;
-      background-color: #1e1e1e;
-      border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.7);
-      text-align: center;
-      z-index: 10;
-    }
-
-    #movableImage {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      width: 60px;
-      height: 60px;
-      cursor: grab;
-      user-select: none;
-      z-index: 1000;
-    }
-    #movableImage:active {
-      cursor: grabbing;
-    }
-  </style>
 </head>
 <body>
   <div class="container">
@@ -80,7 +52,7 @@
     <!-- Button Contact -->
     <a href="mailto:studioscoderealm@gmail.com" class="button">Contact Me</a>
 
-    <!-- Ảnh có thể kéo thả (nằm bên trong container) -->
+    <!-- Ảnh có thể kéo thả -->
     <img
       src="https://raw.githubusercontent.com/devquocdanne/nguyenhongduc.dev/main/images/anh.png.png"
       alt="Anh"
@@ -90,65 +62,5 @@
 
   <!-- JS -->
   <script src="js/script.js"></script>
-
-  <script>
-    // Tạo 30 phần tử tuyết rơi
-    const snowflakeCount = 30;
-
-    for(let i = 0; i < snowflakeCount; i++) {
-      const snowflake = document.createElement('div');
-      snowflake.classList.add('snowflake');
-
-      // Gán giá trị random cho biến CSS custom --random, --random2, ...
-      snowflake.style.setProperty('--random', Math.random());
-      snowflake.style.setProperty('--random2', Math.random());
-      snowflake.style.setProperty('--random3', Math.random());
-
-      // Random kích cỡ tuyết (5px đến 12px)
-      const size = Math.random() * 7 + 5;
-      snowflake.style.width = size + 'px';
-      snowflake.style.height = size + 'px';
-
-      document.body.appendChild(snowflake);
-    }
-
-    // JS kéo thả ảnh giới hạn trong container
-    const img = document.getElementById('movableImage');
-    const container = document.querySelector('.container');
-
-    let isDragging = false;
-    let offsetX, offsetY;
-
-    img.addEventListener('mousedown', (e) => {
-      isDragging = true;
-      offsetX = e.clientX - img.offsetLeft;
-      offsetY = e.clientY - img.offsetTop;
-      img.style.cursor = 'grabbing';
-    });
-
-    document.addEventListener('mouseup', () => {
-      isDragging = false;
-      img.style.cursor = 'grab';
-    });
-
-    document.addEventListener('mousemove', (e) => {
-      if (!isDragging) return;
-
-      let x = e.clientX - offsetX;
-      let y = e.clientY - offsetY;
-
-      // Giới hạn vị trí trong container
-      const maxX = container.clientWidth - img.clientWidth;
-      const maxY = container.clientHeight - img.clientHeight;
-
-      if (x < 0) x = 0;
-      if (y < 0) y = 0;
-      if (x > maxX) x = maxX;
-      if (y > maxY) y = maxY;
-
-      img.style.left = x + 'px';
-      img.style.top = y + 'px';
-    });
-  </script>
 </body>
 </html>
